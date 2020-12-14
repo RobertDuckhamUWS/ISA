@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISA calculator</title>
+</head>
+<body>
+    <script>
+        function genData(){
+            var height = document.getElementById("altInput").value;
+            
 
+
+            if (height<0 || height > 44300){
+               alert("Please enter a value within application limits")
+            }
+            else if (height == ""){
+                alert("Please enter a value")
+            }
+            else{
+            var pressure = 101325 * Math.pow(1-((2.2558*0.00001)*height),5.25864);
+            var temperature = 288.15-(0.0065*height);
+            var density = pressure / (287*temperature);
+            var speedOfSound = Math.sqrt(1.4*287*temperature)
+
+            pressure = Number.parseFloat(pressure).toPrecision(8);
+            temperature = Number.parseFloat(temperature).toPrecision(6);
+            density = Number.parseFloat(density).toPrecision(6);
+            speedOfSound = Number.parseFloat(speedOfSound).toPrecision(6);
+
+            document.getElementById("pressureDisp").innerHTML = "Pressure:" + pressure + " Pa";
+            document.getElementById("temperatureDisp").innerHTML = "Temperature:" + temperature + " K";
+            document.getElementById("densityDisp").innerHTML = "Density:" + density + " kg/m^3";
+            document.getElementById("velocityOfSoundDisp").innerHTML = "Velocity of Sound:" + speedOfSound + " m/s";
+            }
+          
+            
+        }
+    </script>
+    <style>
+        h1{
+            font-size:20px;
+        }
+
+    h2{
+            font-size:20px;
+            }
+        #borderDiv{
+            width:auto;
+            height:auto;
+            position:relative;
+            margin-left:auto;
+            margin-right:auto;
+            background-color: blue;
+        }
+        #mainDiv{
+            width:auto;
+            height:auto;
+            position:relative;
+            margin-left:auto;
+            margin-right:auto;
+            text-align: center;
+            
+        }
+        body{
+            background-image: linear-gradient(to right,rgba(0, 153, 255, 0.5),rgba(4, 247, 255, 0.308))
+        }
+        #generate{
+            background-color: blue;
+            border:none;
+            color:white;
+            padding: 15px 32px;
+            text-align:center;
+            text-decoration: none;
+            display:inline-block;
+            font-size: 16px;
+            border-radius: 12px;
+        }
+   
+       
+    </style>
+    <div id="borderDiv">
+
+    </div>
+    <div id="mainDiv">
+    <h1>
+        Enter a height in meters below and the corresponding values for 
+        pressure,density,temperature and velocity of sound 
+        will be displayed relative to the international standard atmosphere.
+    </h1>
+    <label id=altLabel style="font-size: 15px;">Input Altitude (m)</label><br>
+    <input type="text" id="altInput"  name="altInput"><br>
+
+    <input type="button" id=generate value="Generate data" onclick="genData()">
+
+    <h2 id=pressureDisp>Pressure:</h2>
+    <h2 id=temperatureDisp>Temperature:</h2>
+    <h2 id=densityDisp>Density:</h2>
+    <h2 id=velocityOfSoundDisp>Velocity of Sound:</h2>
+    </div>
+</body>
+</html>
