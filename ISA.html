@@ -13,11 +13,13 @@
 
 
             if (height<0 || height > 44300){
-               alert("Please enter a value within application limits")
+               alert("Please enter a value within application limits");
             }
             else if (height == ""){
-                alert("Please enter a value")
+                alert("Please enter a value");
             }
+
+            
             else{
             var pressure = 101325 * Math.pow(1-((2.2558*0.00001)*height),5.25864);
             var temperature = 288.15-(0.0065*height);
@@ -41,18 +43,23 @@
     <style>
         h1{
             font-size:20px;
+            margin-left:100px;
+            margin-right:100px;
         }
 
     h2{
             font-size:20px;
             }
         #borderDiv{
-            width:auto;
-            height:auto;
-            position:relative;
-            margin-left:auto;
-            margin-right:auto;
-            background-color: blue;
+            background: linear-gradient(to right,rgb(0, 26, 255),rgb(4, 255, 255)); 
+            width: 100%; 
+            height:50px;
+            text-align: center;
+            color:white;
+            font-size:40px;
+            font-family:sans-serif;
+            
+           
         }
         #mainDiv{
             width:auto;
@@ -61,35 +68,45 @@
             margin-left:auto;
             margin-right:auto;
             text-align: center;
+            font-family: sans-serif;
+            color:rgb(83, 83, 83);
             
         }
         body{
-            background-image: linear-gradient(to right,rgba(0, 153, 255, 0.5),rgba(4, 247, 255, 0.308))
+            margin:0px;
+        }
+        #altInput{
+            font-size:16px;
+            font-family:sans-serif;
         }
         #generate{
-            background-color: blue;
+            background-color:rgb(0, 162, 255);
             border:none;
             color:white;
-            padding: 15px 32px;
+            padding: 10px 25px;
             text-align:center;
             text-decoration: none;
             display:inline-block;
             font-size: 16px;
             border-radius: 12px;
+            margin:10px;
         }
+        
    
        
     </style>
     <div id="borderDiv">
-
+        ISA Calculator
     </div>
     <div id="mainDiv">
     <h1>
-        Enter a height in meters below and the corresponding values for 
-        pressure,density,temperature and velocity of sound 
-        will be displayed relative to the international standard atmosphere.
+        Enter a height in meters below and the
+        corresponding values for pressure,density,
+        temperature and velocity of sound will be displayed
+        relative to the international standard 
+        atmosphere.
     </h1>
-    <label id=altLabel style="font-size: 15px;">Input Altitude (m)</label><br>
+    <h1>Altitude input (m)</h1>
     <input type="text" id="altInput"  name="altInput"><br>
 
     <input type="button" id=generate value="Generate data" onclick="genData()">
